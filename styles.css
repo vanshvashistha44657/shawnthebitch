@@ -91,12 +91,15 @@ body {
 
 .slide-track {
   display: flex;
-  animation: slideShow 18s linear infinite;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: max-content;
+  animation: slideShow 9s linear infinite;
 }
 
 .slide-card {
+  flex: 0 0 auto;
   min-width: 280px;
-  margin-right: 1rem;
 }
 
 @keyframes fall {
