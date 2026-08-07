@@ -1,130 +1,445 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>happy one level up</title>
+    <title>Happy Birthday Sakshi</title>
     <link
-        href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-        rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
     />
-    </head>
-    <body>
-        <section class="text-gray-400 body-font bg-gray-900">
-            <div class="container px-5 py-24 mx-auto">
-                <div class="flex flex-wrap w-full mb-20">
-                <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">HAPPY BIRTHDAY SAKSHI ❤️✨</h1>
-                        <div class="h-1 w-20 bg-blue-500 rounded"> </div>
-                </div>
-                <p class="lg:w-1/2 w-full leading-relaxed text-gray-400 text-opacity-90"></p>
-                </div>
-                <div class="flex flex-wrap -m-4">
-                <div class="xl:w-1/4 md:w-1/2 p-4">
-                    <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
-                    <img class="h-400 rounded w-full object-cover object-center mb-6" src="cutie.jpg" alt="content">
-                    <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font"><h1>❤️</h1></h3>
-                    <h2 class="text-lg text-white font-medium title-font mb-4"></h2>
-                    <p class="leading-relaxed text-base"></p>
-                    </div>
-                </div>
-                <div class="xl:w-1/4 md:w-1/2 p-4">
-                    <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
-                    <img class="h-400 rounded w-full object-cover object-center mb-6" src="moment.jpg" alt="content">
-                    <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font"><h1>💙</h1></h3>
-                    <h2 class="text-lg text-white font-medium title-font mb-4"></h2>
-                    <p class="leading-relaxed text-base"></p>
-                    </div>
-                </div>
-                <div class="xl:w-1/4 md:w-1/2 p-4">
-                    <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
-                    <img class="h-400 rounded w-full object-cover object-center mb-6" src="uff.jpg" alt="content">
-                    <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font"><h1>💜</h1></h3>
-                    <h2 class="text-lg text-white font-medium title-font mb-4"></h2>
-                    <p class="leading-relaxed text-base"></p>
-                </div>
-                </div>
-                <div class="xl:w-1/4 md:w-1/2 p-4">
-                <div class="bg-gray-800 bg-opacity-40 p-6 rounded-lg">
-                    <img class="h-400 rounded w-full object-cover object-center mb-6" src="brr.jpg" alt="content">
-                    <h3 class="tracking-widest text-blue-400 text-xs font-medium title-font"><h1>🖤</h1></h3>
-                    <h2 class="text-lg text-white font-medium title-font mb-4"></h2>
-                    <p class="leading-relaxed text-base"></p>
-                </div>
-                </div>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: radial-gradient(circle at top, #312e81 0%, #111827 45%, #030712 100%);
+        overflow-x: hidden;
+      }
+
+      .glass {
+        background: rgba(17, 24, 39, 0.72);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .card-hover:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .photo-overlay {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: all 0.3s ease;
+      }
+
+      .card-hover:hover .photo-overlay {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .sparkle-btn {
+        box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7);
+        animation: pulseGlow 2s infinite;
+      }
+
+      .sparkle-btn:hover {
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7); }
+        70% { box-shadow: 0 0 0 16px rgba(244, 114, 182, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0); }
+      }
+
+      .float-heart {
+        position: fixed;
+        top: -10vh;
+        font-size: 1.2rem;
+        pointer-events: none;
+        z-index: 0;
+        animation: floatHeart 7s linear forwards;
+      }
+
+      @keyframes floatHeart {
+        0% { transform: translate3d(0, 0, 0) scale(0.7); opacity: 0; }
+        10% { opacity: 1; }
+        100% { transform: translate3d(0, 110vh, 0) scale(1.3); opacity: 0; }
+      }
+
+      .confetti-piece {
+        position: fixed;
+        width: 10px;
+        height: 16px;
+        border-radius: 3px;
+        pointer-events: none;
+        z-index: 50;
+        animation: fall 2.8s ease-out forwards;
+      }
+
+      .slideshow-panel {
+        display: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+      }
+
+      .slideshow-panel.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-track {
+        display: flex;
+        animation: slideShow 18s linear infinite;
+      }
+
+      .slide-card {
+        min-width: 280px;
+        margin-right: 1rem;
+      }
+
+      @keyframes fall {
+        0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 1; }
+        100% { transform: translate3d(var(--x), 110vh, 0) rotate(720deg); opacity: 0; }
+      }
+
+      @keyframes slideShow {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      .lock-screen {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top, #312e81 0%, #111827 45%, #030712 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        padding: 1.5rem;
+      }
+
+      .lock-card {
+        width: min(100%, 480px);
+        background: rgba(17, 24, 39, 0.82);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(16px);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+      }
+
+      .hidden-content {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="text-gray-200 relative">
+    <div id="lockScreen" class="lock-screen">
+      <div class="lock-card text-center">
+        <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Locked surprise</p>
+        <h1 class="text-3xl md:text-4xl font-black text-white mt-3">A little birthday treasure</h1>
+        <p class="mt-4 text-gray-300">This page unlocks on 30 Oct 2026 or with the special code.</p>
+        <input id="unlockInput" type="text" placeholder="Enter code" class="w-full mt-5 px-4 py-3 rounded-full bg-white/10 text-white outline-none border border-white/10" />
+        <button id="unlockBtn" class="mt-4 w-full px-5 py-3 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white font-semibold">Unlock</button>
+        <p id="unlockMessage" class="mt-3 text-sm text-pink-200"></p>
+      </div>
+    </div>
+
+    <div id="mainContent" class="hidden-content">
+      <div id="backgroundEffects"></div>
+
+    <section class="min-h-screen px-5 py-16 md:py-24 relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="glass rounded-[2rem] p-8 md:p-12 shadow-2xl">
+          <div class="flex flex-col lg:flex-row items-center gap-10">
+            <div class="lg:w-2/3">
+              <p class="text-sm uppercase tracking-[0.35em] text-pink-400 mb-4">
+                Special day • Special person
+              </p>
+              <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
+                Happy Birthday <span class="text-pink-400">Sakshi</span> ❤️✨
+              </h1>
+              <p class="mt-5 text-lg text-gray-300 max-w-2xl">
+                A little celebration for the sweetest smile, the warmest heart, and the cutest soul.
+              </p>
+              <div class="flex flex-wrap gap-3 mt-6">
+                <span class="px-4 py-2 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30">Sweet</span>
+                <span class="px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">Cute</span>
+                <span class="px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30">Lovely</span>
+                <span class="px-4 py-2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">Unforgettable</span>
+              </div>
+              <div class="flex flex-wrap gap-3 mt-8">
+                <button id="magicBtn" class="sparkle-btn px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white font-semibold">
+                  ✨ Open the birthday magic
+                </button>
+                <button id="albumBtn" class="px-6 py-3 rounded-full border border-pink-400/40 bg-white/10 text-white font-semibold hover:bg-white/20">
+                  📸 Open photo album
+                </button>
+              </div>
             </div>
+
+            <div class="lg:w-1/3 w-full grid grid-cols-2 gap-4">
+              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
+                <img class="h-40 w-full object-cover rounded-xl" src="./cutie.jpg" alt="Cute moment" />
+                <p class="text-center text-xl mt-3">❤️</p>
+              </div>
+              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
+                <img class="h-40 w-full object-cover rounded-xl" src="./moment.jpg" alt="Beautiful moment" />
+                <p class="text-center text-xl mt-3">💙</p>
+              </div>
+              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
+                <img class="h-40 w-full object-cover rounded-xl" src="./uff.jpg" alt="Lovely moment" />
+                <p class="text-center text-xl mt-3">💜</p>
+              </div>
+              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
+                <img class="h-40 w-full object-cover rounded-xl" src="./brr.jpg" alt="Special moment" />
+                <p class="text-center text-xl mt-3">🖤</p>
+              </div>
             </div>
-        </section>
-        <section class="text-gray-400 bg-gray-900 body-font">
-            <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-white">MEMORIES ✨</h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">HAPPY 19'th BIRTHDAY CUTIEEEE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 pb-20 relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+          <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Featured memories</p>
+          <h2 class="text-3xl md:text-4xl font-semibold text-white mt-2">
+            Four little moments, one big love
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
+            <img class="absolute inset-0 w-full h-full object-cover" src="./deep%20hug.jpg" alt="Deep hug" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
+              <div class="text-white">
+                <p class="text-sm uppercase tracking-[0.25em] text-pink-300">Deep Hug</p>
+                <h3 class="text-xl font-semibold mt-1">The way you cuddle me feels like home.</h3>
+              </div>
             </div>
-            <div class="flex flex-wrap -m-4">
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="deep hug.jpg">
-                    <div class="px-8 py-12 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">DEEP HUG</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3">!...</h1>
-                    <p class="leading-relaxed">THE WAY YOU CUDDLE ME , THE WAY YOU ARE MINE . ALL I WANNA SAY JUST BE MINE. </p>
-                    </div>
-                </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="WOAH.jpg">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">SPENDING DAY OUT WITH YOU</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3"></h1>
-                    <p class="leading-relaxed">SPENDING DAY'S WITH YOU ARE LIKE HAPPY HOURS WHICH COME'S FOR A SHORT PERIOD OF TIME BUT MAKE'S MY WHOLE DAY</p>
-                    </div>
-                </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="3 BESTIES.jpg">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">3 BESTIES</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3">!...</h1>
-                    <p class="leading-relaxed">      <p>.</p>                           .<p>.</p></p>
-                    </div>
-                </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="smile.jpg">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">SMILE</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3">!...</h1>
-                    <p class="leading-relaxed"><P>.</P><P>.<P><P>.</P><P>.</P></p>
-                    </div>
-                </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="BOOP.jpg">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">DAYMMM</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3">Holden Caulfield</h1>
-                    <p class="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-                    </div>
-                </div>
-                </div>
-                <div class="lg:w-1/3 sm:w-1/2 p-4">
-                <div class="flex relative">
-                    <img alt="gallery" class="absolute inset-0 w-full h-full object-cover object-center" src="AXAA.jpg">
-                    <div class="px-8 py-10 relative z-10 w-full border-4 border-gray-800 bg-gray-900 opacity-0 hover:opacity-100">
-                    <h2 class="tracking-widest text-sm title-font font-medium text-indigo-400 mb-1">MINE</h2>
-                    <h1 class="title-font text-lg font-medium text-white mb-3">!..</h1>
-                    <p class="leading-relaxed"><P>.</P><P>.<P><P>.</P><P>.</P></p>
-                    </div>
-                </div>
-                </div>
+          </div>
+
+          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
+            <img class="absolute inset-0 w-full h-full object-cover" src="./WOAH.jpg" alt="Day out" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
+              <div class="text-white">
+                <p class="text-sm uppercase tracking-[0.25em] text-blue-300">Day Out</p>
+                <h3 class="text-xl font-semibold mt-1">Spending time with you makes every day special.</h3>
+              </div>
             </div>
+          </div>
+
+          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
+            <img class="absolute inset-0 w-full h-full object-cover" src="./3%20BESTIES.jpg" alt="Besties" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
+              <div class="text-white">
+                <p class="text-sm uppercase tracking-[0.25em] text-purple-300">Three Besties</p>
+                <h3 class="text-xl font-semibold mt-1">A little chaos, a lot of love.</h3>
+              </div>
             </div>
-        </section>
-    </body
+          </div>
+
+          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
+            <img class="absolute inset-0 w-full h-full object-cover" src="./smile.jpg" alt="Smile" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
+              <div class="text-white">
+                <p class="text-sm uppercase tracking-[0.25em] text-amber-300">Smile</p>
+                <h3 class="text-xl font-semibold mt-1">That smile steals the whole room.</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 pb-20 relative z-10 slideshow-panel" id="albumPanel">
+      <div class="max-w-6xl mx-auto glass rounded-[2rem] p-6 md:p-8">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Animated album</p>
+            <h2 class="text-2xl font-semibold text-white">The rest of the memories</h2>
+          </div>
+          <button id="closeAlbumBtn" class="px-4 py-2 rounded-full bg-white/10 text-white">Close</button>
+        </div>
+        <div class="overflow-hidden rounded-3xl">
+          <div class="slide-track">
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./cutie.jpg" alt="Cute" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./moment.jpg" alt="Moment" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./uff.jpg" alt="Uff" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./brr.jpg" alt="Brr" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./BOOP.jpg" alt="Boop" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./AXAA.jpg" alt="Mine" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./cutie.jpg" alt="Cute" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./moment.jpg" alt="Moment" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./uff.jpg" alt="Uff" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./brr.jpg" alt="Brr" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./BOOP.jpg" alt="Boop" />
+            </div>
+            <div class="slide-card">
+              <img class="w-full h-64 object-cover rounded-3xl" src="./AXAA.jpg" alt="Mine" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-5 pb-10 text-center text-gray-500 relative z-10">
+      <p>Made with love for your birthday, Sakshi 💖</p>
+    </footer>
+    </div>
+
+    <script>
+      const lockScreen = document.getElementById('lockScreen');
+      const mainContent = document.getElementById('mainContent');
+      const unlockInput = document.getElementById('unlockInput');
+      const unlockBtn = document.getElementById('unlockBtn');
+      const unlockMessage = document.getElementById('unlockMessage');
+      const magicBtn = document.getElementById('magicBtn');
+      const albumBtn = document.getElementById('albumBtn');
+      const closeAlbumBtn = document.getElementById('closeAlbumBtn');
+      const backgroundEffects = document.getElementById('backgroundEffects');
+      const albumPanel = document.getElementById('albumPanel');
+
+      const unlockCode = 'loveyou3018';
+      const unlockDate = new Date('2026-10-30T00:00:00');
+
+      function isUnlocked() {
+        const now = new Date();
+        return now >= unlockDate || unlockInput.value.trim().toLowerCase() === unlockCode;
+      }
+
+      function showContent() {
+        lockScreen.style.display = 'none';
+        mainContent.classList.remove('hidden-content');
+      }
+
+      unlockBtn.addEventListener('click', () => {
+        if (isUnlocked()) {
+          showContent();
+        } else {
+          unlockMessage.textContent = 'Wrong code. Try again or wait until 30 Oct 2026.';
+        }
+      });
+
+      unlockInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          unlockBtn.click();
+        }
+      });
+
+      if (new Date() >= unlockDate) {
+        showContent();
+      }
+
+      albumBtn.addEventListener('click', () => {
+        albumPanel.classList.add('active');
+        albumPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      closeAlbumBtn.addEventListener('click', () => {
+        albumPanel.classList.remove('active');
+      });
+
+      function createHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'float-heart';
+        heart.textContent = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (5 + Math.random() * 4) + 's';
+        heart.style.opacity = '0';
+        backgroundEffects.appendChild(heart);
+        setTimeout(() => heart.remove(), 7000);
+      }
+
+      function createConfetti() {
+        const colors = ['#f472b6', '#60a5fa', '#a78bfa', '#facc15', '#34d399'];
+        for (let i = 0; i < 40; i++) {
+          const piece = document.createElement('span');
+          piece.className = 'confetti-piece';
+          piece.style.left = Math.random() * 100 + 'vw';
+          piece.style.top = '-20px';
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.setProperty('--x', (Math.random() - 0.5) * 200 + 'px');
+          piece.style.animationDelay = Math.random() * 0.2 + 's';
+          backgroundEffects.appendChild(piece);
+          setTimeout(() => piece.remove(), 3000);
+        }
+      }
+
+      function playBirthdayTune() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        const notes = [261.63, 329.63, 392.0, 523.25, 392.0, 329.63, 261.63];
+        notes.forEach((freq, index) => {
+          const oscillator = ctx.createOscillator();
+          const gain = ctx.createGain();
+          oscillator.type = 'sine';
+          oscillator.frequency.value = freq;
+          gain.gain.value = 0.0001;
+          oscillator.connect(gain);
+          gain.connect(ctx.destination);
+          const startTime = ctx.currentTime + index * 0.18;
+          oscillator.start(startTime);
+          gain.gain.exponentialRampToValueAtTime(0.08, startTime + 0.05);
+          gain.gain.exponentialRampToValueAtTime(0.0001, startTime + 0.18);
+          oscillator.stop(startTime + 0.2);
+        });
+        setTimeout(() => ctx.close(), 1500);
+      }
+
+      magicBtn.addEventListener('click', () => {
+        createConfetti();
+        for (let i = 0; i < 10; i++) setTimeout(createHeart, i * 120);
+        playBirthdayTune();
+        magicBtn.textContent = '🎉 Birthday magic activated!';
+      });
+
+      setInterval(() => {
+        for (let i = 0; i < 2; i++) createHeart();
+      }, 1200);
+    </script>
+  </body>
 </html>
+
