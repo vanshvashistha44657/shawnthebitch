@@ -94,7 +94,7 @@ body {
   flex-wrap: nowrap;
   gap: 1rem;
   width: max-content;
-  animation: slideShow 9s linear infinite;
+  animation: slideShow 22s linear infinite;
 }
 
 .slide-card {
