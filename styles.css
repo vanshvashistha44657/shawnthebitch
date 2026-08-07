@@ -38,7 +38,7 @@ body {
 
 .sparkle-btn {
   box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7);
-  animation: pulseGlow 2s infinite;
+  animation: pulseGlow 1.5s infinite;
 }
 
 .sparkle-btn:hover {
@@ -94,7 +94,7 @@ body {
   flex-wrap: nowrap;
   gap: 1rem;
   width: max-content;
-  animation: slideShow 22s linear infinite;
+  animation: slideShow 18s linear infinite;
 }
 
 .slide-card {
