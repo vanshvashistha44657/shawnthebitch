@@ -1,223 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Happy Birthday Sakshi</title>
-    <link
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body class="text-gray-200 relative">
-    <div id="lockScreen" class="lock-screen">
-      <div class="lock-card text-center">
-        <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Locked surprise</p>
-        <h1 class="text-3xl md:text-4xl font-black text-white mt-3">A little birthday treasure</h1>
-        <p class="mt-4 text-gray-300">This page unlocks on 30 Oct 2026 or with the special code.</p>
-        <input id="unlockInput" type="text" placeholder="Enter code" class="w-full mt-5 px-4 py-3 rounded-full bg-white/10 text-white outline-none border border-white/10" />
-        <button id="unlockBtn" class="mt-4 w-full px-5 py-3 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white font-semibold">Unlock</button>
-        <p id="unlockMessage" class="mt-3 text-sm text-pink-200"></p>
-      </div>
-    </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday Sakshi ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
+<style>
+:root{--rose:#ff6b8b;--gold:#ffc46b;--cream:#fff4e6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#3d1654,#14081f 55%,#0b0414) fixed;overflow-x:hidden}
+[hidden]{display:none!important}
+.serif{font-family:"Fraunces",Georgia,serif;font-style:italic}
+#fx{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90}
+#stars{position:fixed;inset:0;pointer-events:none}
+#stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{50%{opacity:.15;transform:scale(.5)}}
+section,main{position:relative;z-index:1}
+.eyebrow{letter-spacing:.35em;text-transform:uppercase;font-size:.72rem;color:var(--rose)}
+.btn{padding:13px 22px;border:0;border-radius:99px;background:linear-gradient(135deg,var(--rose),#ff8e5e);color:#fff;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+.btn.ghost{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
 
-    <div id="mainContent" class="hidden-content">
-      <div id="backgroundEffects"></div>
+/* lock */
+#lock{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:18px}
+.moon{font-size:4rem;animation:bob 4s ease-in-out infinite;filter:drop-shadow(0 0 24px #ffe9a8)}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-6deg)}}
+#lock h1{font:italic 800 clamp(2rem,7vw,3.6rem)/1.1 Fraunces,Georgia,serif;margin:0}
+#lock p{margin:0;color:#cdb9dd;max-width:420px}
+.count{display:flex;gap:10px}
+.count div{width:72px;padding:12px 0;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+.count b{display:block;font:700 1.9rem Fraunces,serif}
+.count small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
+.pill{display:flex;gap:8px;width:min(92vw,400px)}
+.pill input{flex:1;min-width:0;padding:13px 18px;border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:1rem;outline:none}
+.pill input:-webkit-autofill{-webkit-text-fill-color:#fff;box-shadow:0 0 0 100px #2a1840 inset}
+.shake{animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+#msg{min-height:1.2em;font-size:.9rem;color:#ffb3c4}
 
-    <section class="min-h-screen px-5 py-16 md:py-24 relative z-10">
-      <div class="max-w-6xl mx-auto">
-        <div class="glass rounded-[2rem] p-8 md:p-12 shadow-2xl">
-          <div class="flex flex-col lg:flex-row items-center gap-10">
-            <div class="lg:w-2/3">
-              <p class="text-sm uppercase tracking-[0.35em] text-pink-400 mb-4">
-                Special day • Special person
-              </p>
-              <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
-                Happy Birthday <span class="text-pink-400">Sakshi</span> ❤️✨
-              </h1>
-              <p class="mt-5 text-lg text-gray-300 max-w-2xl">
-                A little celebration for the sweetest smile, the warmest heart, and the cutest soul.
-              </p>
-              <div class="flex flex-wrap gap-3 mt-6">
-                <span class="px-4 py-2 rounded-full bg-pink-500/20 text-pink-300 border border-pink-400/30">Sweet</span>
-                <span class="px-4 py-2 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">Cute</span>
-                <span class="px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 border border-purple-400/30">Lovely</span>
-                <span class="px-4 py-2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">Unforgettable</span>
-              </div>
-              <div class="flex flex-wrap gap-3 mt-8">
-                <button id="magicBtn" class="sparkle-btn px-6 py-3 rounded-full bg-gradient-to-r from-pink-500 to-fuchsia-500 text-white font-semibold">
-                  ✨ Open the birthday magic
-                </button>
-                <button id="albumBtn" class="px-6 py-3 rounded-full border border-pink-400/40 bg-white/10 text-white font-semibold hover:bg-white/20">
-                  📸 Open photo album
-                </button>
-              </div>
-            </div>
+/* cake */
+#cake{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;gap:10px;overflow:hidden}
+#cake .shade{position:absolute;inset:0;background:radial-gradient(circle at 50% 55%,rgba(0,0,0,0) 0,rgba(3,1,8,.96) 46%);transition:opacity 1.8s;pointer-events:none;z-index:2}
+body.lit #cake .shade{opacity:0}
+#cake>*:not(.shade){position:relative;z-index:3}
+#cake .glow{position:absolute;z-index:1;width:min(120vw,700px);aspect-ratio:1;top:50%;left:50%;transform:translate(-50%,-38%);background:radial-gradient(circle,rgba(255,170,70,.35),transparent 60%);animation:glow 1.6s ease-in-out infinite alternate;transition:opacity 1s}
+body.lit #cake .glow{opacity:0}
+@keyframes glow{to{opacity:.7;transform:translate(-50%,-38%) scale(1.06)}}
+#cake h2{font:italic 800 clamp(1.8rem,6vw,3rem) Fraunces,Georgia,serif;margin:0}
+#cake p{margin:0;color:#e5d3f0}
+#cakeSvg{width:min(80vw,360px);cursor:pointer;overflow:visible;margin-top:6px}
+.fl,.fi{transform-box:fill-box;transform-origin:50% 100%}
+.fl{transition:transform .08s}
+.fi{animation:flick .35s ease-in-out infinite alternate}
+@keyframes flick{from{transform:scaleY(.88) rotate(-3deg)}to{transform:scaleY(1.1) rotate(3deg)}}
+.fl.out{opacity:0;transform:scale(.1)!important;transition:all .5s}
+.smoke{fill:#d8cce6;opacity:0;transform-box:fill-box;transform-origin:center;animation:smoke 2.2s ease-out forwards}
+@keyframes smoke{10%{opacity:.7}to{opacity:0;transform:translate(8px,-70px) scale(4)}}
 
-            <div class="lg:w-1/3 w-full grid grid-cols-2 gap-4">
-              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
-                <img class="h-40 w-full object-cover rounded-xl" src="./cutie.jpg" alt="Cute moment" />
-                <p class="text-center text-xl mt-3">❤️</p>
-              </div>
-              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
-                <img class="h-40 w-full object-cover rounded-xl" src="./moment.jpg" alt="Beautiful moment" />
-                <p class="text-center text-xl mt-3">💙</p>
-              </div>
-              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
-                <img class="h-40 w-full object-cover rounded-xl" src="./uff.jpg" alt="Lovely moment" />
-                <p class="text-center text-xl mt-3">💜</p>
-              </div>
-              <div class="card-hover rounded-2xl overflow-hidden bg-gray-900/70 p-3">
-                <img class="h-40 w-full object-cover rounded-xl" src="./brr.jpg" alt="Special moment" />
-                <p class="text-center text-xl mt-3">🖤</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+/* story */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;gap:14px}
+.hero h1{margin:0;font:italic 600 clamp(1.4rem,5vw,2.2rem) Fraunces,serif;color:var(--gold)}
+.hero h2{margin:0;font:italic 800 clamp(3.4rem,17vw,9rem)/1 Fraunces,serif;cursor:pointer;background:linear-gradient(120deg,#ff8fab,#ffc46b,#c79bff,#ff8fab);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 6s linear infinite}
+@keyframes sheen{to{background-position:300% 0}}
+.hero h2 span{display:inline-block;opacity:0;transform:translateY(40px) rotate(8deg);animation:pop .7s cubic-bezier(.2,1.6,.4,1) forwards;animation-delay:calc(var(--i)*90ms + .2s)}
+@keyframes pop{to{opacity:1;transform:none}}
+.hero p{max-width:480px;color:#d8c5e6;margin:0;line-height:1.6}
+.row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.scrollcue{margin-top:24px;font-size:.8rem;letter-spacing:.2em;color:#a994bb;animation:bob 2s infinite}
+.block{padding:70px 20px;text-align:center}
+.block h3{font:italic 800 clamp(1.7rem,5vw,2.6rem) Fraunces,serif;margin:8px 0 6px}
+.block .sub{color:#b9a5cb;margin:0 0 30px}
+.rv{opacity:0;transform:translateY(30px);transition:all .9s}
+.rv.in{opacity:1;transform:none}
 
-    <section class="px-5 pb-20 relative z-10">
-      <div class="max-w-6xl mx-auto">
-        <div class="text-center mb-10">
-          <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Featured memories</p>
-          <h2 class="text-3xl md:text-4xl font-semibold text-white mt-2">
-            Four little moments, one big love
-          </h2>
-        </div>
+/* polaroids */
+#poly{position:relative;max-width:1000px;margin:0 auto}
+.pol{position:absolute;left:0;top:0;width:var(--pw);background:#fff8ee;padding:10px 10px 0;border-radius:3px;box-shadow:0 14px 30px rgba(0,0,0,.55);cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;margin:0}
+.pol:active{cursor:grabbing}
+.ph{height:calc(var(--pw)*1.05);overflow:hidden;background:#cfd3de;position:relative}
+.pol img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;filter:blur(12px) grayscale(1) brightness(.45)}
+.pol.dev img{filter:none;transition:filter 2.4s ease}
+.ph::after{content:"tap to develop";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 1.3rem Caveat,cursive;color:#fff;text-shadow:0 2px 8px #000}
+.pol.dev .ph::after{display:none}
+.pol figcaption{font:600 1.15rem/1.15 Caveat,"Segoe Print",cursive;color:#3b2a2a;padding:8px 4px 12px;min-height:3.4em;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1.6s .8s}
+.pol.dev figcaption{opacity:1}
 
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
-            <img class="absolute inset-0 w-full h-full object-cover" src="./deep%20hug.jpg" alt="Deep hug" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
-              <div class="text-white">
-                <p class="text-sm uppercase tracking-[0.25em] text-pink-300">Deep Hug</p>
-                <h3 class="text-xl font-semibold mt-1">The way you cuddle me feels like home.</h3>
-              </div>
-            </div>
-          </div>
+/* letter */
+.env{position:relative;width:min(80vw,300px);height:190px;margin:0 auto;cursor:pointer;transition:opacity .6s .5s,transform .6s .5s}
+.env .back{position:absolute;inset:0;background:#e6c288;border-radius:10px;box-shadow:0 14px 30px rgba(0,0,0,.5)}
+.env .front{position:absolute;inset:0;background:#f8e2b8;border-radius:10px;clip-path:polygon(0 0,50% 52%,100% 0,100% 100%,0 100%)}
+.env .flap{position:absolute;left:0;right:0;top:0;height:100px;background:#e9c88f;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s}
+.env .seal{position:absolute;left:50%;top:78px;transform:translateX(-50%);font-size:2rem;animation:beat 1.2s infinite;z-index:3}
+@keyframes beat{50%{transform:translateX(-50%) scale(1.25)}}
+.env.open{opacity:0;transform:translateY(20px);pointer-events:none}
+.env.open .flap{transform:rotateX(180deg)}
+.env.open .seal{display:none}
+.paper{max-width:560px;margin:0 auto;max-height:0;overflow:hidden;opacity:0;padding:0 30px;background:#fff4e6 repeating-linear-gradient(transparent 0 37px,#f0dcc0 37px 38px);color:#3b2a2a;border-radius:6px;text-align:left;font:600 1.45rem/38px Caveat,"Segoe Print",cursive;white-space:pre-wrap;box-shadow:0 20px 50px rgba(0,0,0,.5);transition:max-height 1.2s,opacity .8s,padding .8s}
+.paper.show{max-height:900px;opacity:1;padding:20px 30px}
+.paper.typing::after{content:"▍";animation:blink .7s infinite}
+@keyframes blink{50%{opacity:0}}
 
-          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
-            <img class="absolute inset-0 w-full h-full object-cover" src="./WOAH.jpg" alt="Day out" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
-              <div class="text-white">
-                <p class="text-sm uppercase tracking-[0.25em] text-blue-300">Day Out</p>
-                <h3 class="text-xl font-semibold mt-1">Spending time with you makes every day special.</h3>
-              </div>
-            </div>
-          </div>
+/* scratch */
+.scratch{position:relative;width:min(88vw,340px);height:170px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:0 14px 40px rgba(255,107,139,.3)}
+.reward{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:linear-gradient(135deg,#ffd29a,#ff8fab);color:#3b1030;font:italic 800 1.3rem/1.3 Fraunces,serif}
+.reward{white-space:pre-line;border:3px dashed rgba(59,16,48,.45);border-radius:18px;margin:8px;font-size:1.1rem}
+.scratch canvas{position:absolute;inset:0;touch-action:none;cursor:crosshair;transition:opacity 1s}
+footer{padding:50px 20px 70px;text-align:center;color:#a994bb}
+footer button{background:none;border:0;font-size:2.4rem;cursor:pointer;animation:beat2 1.3s infinite}
+@keyframes beat2{50%{transform:scale(1.2)}}
+.balloon{position:fixed;bottom:-80px;z-index:80;pointer-events:none;animation:up linear forwards}
+@keyframes up{to{transform:translate(var(--dx),-115vh) rotate(var(--rt))}}
+#mute{position:fixed;right:16px;bottom:16px;z-index:95;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(20,8,31,.7);color:#fff;font-size:1.3rem;cursor:pointer;backdrop-filter:blur(6px)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<audio id="bg" src="song.mp3" loop preload="auto"></audio>
+<button id="mute" hidden aria-label="Toggle music">🔊</button>
+<div id="stars"></div>
 
-          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
-            <img class="absolute inset-0 w-full h-full object-cover" src="./3%20BESTIES.jpg" alt="Besties" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
-              <div class="text-white">
-                <p class="text-sm uppercase tracking-[0.25em] text-purple-300">Three Besties</p>
-                <h3 class="text-xl font-semibold mt-1">A little chaos, a lot of love.</h3>
-              </div>
-            </div>
-          </div>
+<!-- 1. LOCK -->
+<section id="lock">
+  <div class="moon">🌙</div>
+  <div class="eyebrow">A surprise is sleeping here</div>
+  <h1>Not yet… but almost ✨</h1>
+  <p>Wait for midnight and it wakes up on its own. Or whisper the secret word.</p>
+  <div class="count">
+    <div><b id="cd">0</b><small>days</small></div><div><b id="ch">0</b><small>hrs</small></div>
+    <div><b id="cm">0</b><small>min</small></div><div><b id="cs">0</b><small>sec</small></div>
+  </div>
+  <div class="pill" id="pill"><input id="code" placeholder="Secret word" autocomplete="off"><button class="btn" id="go">Open</button></div>
+  <div id="msg"></div>
+</section>
 
-          <div class="card-hover group relative overflow-hidden rounded-3xl h-80 shadow-xl">
-            <img class="absolute inset-0 w-full h-full object-cover" src="./smile.jpg" alt="Smile" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
-            <div class="absolute inset-0 flex items-end p-6 photo-overlay">
-              <div class="text-white">
-                <p class="text-sm uppercase tracking-[0.25em] text-amber-300">Smile</p>
-                <h3 class="text-xl font-semibold mt-1">That smile steals the whole room.</h3>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- 2. CAKE -->
+<section id="cake" hidden>
+  <div class="glow"></div><div class="shade"></div>
+  <div id="wish">
+    <h2>Make a wish, <span id="n1"></span>…</h2>
+    <p>Blow into your mic to blow out the candles — or just tap them.</p>
+  </div>
+  <svg id="cakeSvg" viewBox="0 0 300 290" aria-label="Birthday cake">
+    <ellipse cx="150" cy="272" rx="135" ry="15" fill="#e6d6f1"/>
+    <rect x="38" y="192" width="224" height="78" rx="14" fill="#f48fb1"/>
+    <path d="M38 206c0-14 12-18 22-14 10 6 18 18 30 8s22-14 34-4 20 14 32 2 24-12 34 0 20 10 30 0 22-6 42 2v-8c0-10-8-14-14-14H52c-8 0-14 6-14 14z" fill="#fff4e6"/>
+    <rect x="74" y="132" width="152" height="66" rx="12" fill="#ffb6c8"/>
+    <path d="M74 146c0-12 10-16 18-12 10 6 14 14 26 6s20-12 30-2 18 12 28 2 22-10 30-2 16 4 20 2v-8c0-8-6-12-12-12H88c-8 0-14 6-14 14z" fill="#fff4e6"/>
+    <g id="sprk"></g><g id="cand"></g>
+  </svg>
+  <button class="btn" id="micBtn">🎤 Use mic to blow</button>
+</section>
 
-    <section class="px-5 pb-20 relative z-10 slideshow-panel" id="albumPanel">
-      <div class="max-w-6xl mx-auto glass rounded-[2rem] p-6 md:p-8">
-        <div class="flex items-center justify-between mb-4">
-          <div>
-            <p class="text-sm uppercase tracking-[0.35em] text-pink-400">Animated album</p>
-            <h2 class="text-2xl font-semibold text-white">The rest of the memories</h2>
-          </div>
-          <button id="closeAlbumBtn" class="px-4 py-2 rounded-full bg-white/10 text-white">Close</button>
-        </div>
-        <div class="overflow-hidden rounded-3xl">
-          <div class="slide-track">
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./cutie.jpg" alt="Cute" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./moment.jpg" alt="Moment" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./uff.jpg" alt="Uff" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./brr.jpg" alt="Brr" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./BOOP.jpg" alt="Boop" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./AXAA.jpg" alt="Mine" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./3%20BESTIES.jpg" alt="Besties" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./WOAH.jpg" alt="Day out" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./smile.jpg" alt="Smile" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./deep%20hug.jpg" alt="Deep hug" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./cutie.jpg" alt="Cute" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./moment.jpg" alt="Moment" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./uff.jpg" alt="Uff" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./brr.jpg" alt="Brr" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./BOOP.jpg" alt="Boop" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./AXAA.jpg" alt="Mine" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./3%20BESTIES.jpg" alt="Besties" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./WOAH.jpg" alt="Day out" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./smile.jpg" alt="Smile" />
-            </div>
-            <div class="slide-card">
-              <img class="w-full h-64 object-cover rounded-3xl" src="./deep%20hug.jpg" alt="Deep hug" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+<!-- 3. STORY -->
+<main id="story" hidden>
+  <header class="hero">
+    <h1>Happy Birthday</h1>
+    <h2 id="name" title="tap me"></h2>
+    <p>A little celebration for the sweetest smile, the warmest heart and the cutest soul. Scroll down — there’s more hiding in here.</p>
+    <div class="row"><button class="btn" id="song">🎵 Play the birthday song</button><button class="btn ghost" id="fw">🎆 Fireworks</button></div>
+    <div class="scrollcue">SCROLL ↓</div>
+  </header>
 
-    <footer class="px-5 pb-10 text-center text-gray-500 relative z-10">
-      <p>Made with love for your birthday, Sakshi 💖</p>
-    </footer>
-    </div>
+  <section class="block rv">
+    <div class="eyebrow">Our memories</div>
+    <h3>Tap to develop. Drag to rearrange.</h3>
+    <p class="sub">Every photo is still blurry — bring them back to life.</p>
+    <div id="poly"></div>
+  </section>
 
-    <script src="./script.js"></script>
-  </body>
+  <section class="block rv">
+    <div class="eyebrow">Just for you</div>
+    <h3>You’ve got mail 💌</h3>
+    <p class="sub">Tap the envelope.</p>
+    <div class="env" id="env"><div class="back"></div><div class="front"></div><div class="flap"></div><div class="seal">❤️</div></div>
+    <div class="paper" id="paper"></div>
+  </section>
+
+  <section class="block rv">
+    <div class="eyebrow">One last thing</div>
+    <h3>A gift, hidden under silver</h3>
+    <p class="sub">Scratch it with your finger.</p>
+    <div class="scratch"><div class="reward" id="reward"></div><canvas id="sc" width="340" height="170"></canvas></div>
+  </section>
+
+  <footer><button id="heart" aria-label="more magic">💖</button><p>Made with love, only for <span id="n2"></span>.</p></footer>
+</main>
+
+<script>
+/* ====== EDIT ME ====== */
+const CFG = {
+  name: 'Sakshi',
+  from: 'Vansh',
+  unlock: '2026-10-30T00:00:00',   // local time of whoever opens it
+  code: 'loveyou3018',
+  photos: [
+    ['smile.jpg',    'that laugh. my favourite sound.'],
+    ['WOAH.jpg',     'any table is the best table with you'],
+    ['deep hug.jpg', 'the way you hug me feels like home'],
+    ['AXAA.jpg',     'the smile that fixes my whole day'],
+    ['3 BESTIES.jpg','peace, love & a tiny bit of chaos'],
+    ['brr.jpg',      'my favourite place to stand: next to you'],
+    ['BOOP.jpg',     'caught you being cute by the lake', 'contain'],
+    ['cutie.jpg',    'a little chaos, a lot of love'],
+    ['moment.jpg',   'even rain looks good with you'],
+    ['uff.jpg',      'uff. this one’s just for us']
+  ],
+  letter: `Dear ${'Sakshi'},
+
+Happy birthday, my favourite person.
+You turn ordinary days into the ones
+I remember: a laugh, a hug, a little chaos.
+
+Thank you for being my home, my peace
+and my favourite person to be silly with.
+
+This year felt like a roller coaster,
+with its highs, its drops and its loops,
+but you made every part of it worth riding.
+I wish I could hug you in person today,
+so until then, this page is my hug.
+
+Always yours,
+`,
+  gift: '🎟️ COUPON\nOne movie date, fully planned by me.\nYou pick the food, the movie and the games.\nValid whenever you want, no expiry.'
+};
+/* ===================== */
+
+const $ = s => document.querySelector(s), rnd = (a,b) => a + Math.random()*(b-a);
+$('#n1').textContent = $('#n2').textContent = CFG.name;
+for (let i=0;i<90;i++){const s=document.createElement('i');s.style.cssText=`left:${rnd(0,100)}vw;top:${rnd(0,100)}vh;animation-delay:${rnd(0,3)}s;opacity:${rnd(.3,1)}`;$('#stars').appendChild(s)}
+
+/* ---- particles ---- */
+const cv=$('#fx'),cx=cv.getContext('2d');let P=[],running=false;
+const fit=()=>{cv.width=innerWidth;cv.height=innerHeight};fit();addEventListener('resize',fit);
+const COL=['#ff6b8b','#ffc46b','#8ecbff','#c79bff','#7be0b0','#fff4e6'];
+function burst(x,y,n=60,spark=false){
+  for(let i=0;i<n;i++){const a=rnd(0,6.283),v=spark?rnd(2,7):rnd(3,10);
+    P.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-(spark?0:4),g:spark?.05:.22,l:1,d:spark?rnd(.008,.014):rnd(.006,.012),r:spark?rnd(1.5,3):rnd(4,8),c:COL[i%COL.length],rot:rnd(0,6),vr:rnd(-.3,.3),s:spark})}
+  if(!running){running=true;requestAnimationFrame(loop)}
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.l>0&&p.y<cv.height+30);
+  for(const p of P){p.vx*=.985;p.vy+=p.g;p.x+=p.vx;p.y+=p.vy;p.l-=p.d;p.rot+=p.vr;cx.globalAlpha=Math.max(p.l,0);cx.fillStyle=p.c;
+    if(p.s){cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}
+    else{cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()}}
+  cx.globalAlpha=1;
+  if(P.length)requestAnimationFrame(loop);else{running=false;cx.clearRect(0,0,cv.width,cv.height)}
+}
+const fireworks=(n=6)=>{for(let i=0;i<n;i++)setTimeout(()=>burst(rnd(.12,.88)*innerWidth,rnd(.1,.5)*innerHeight,80,true),i*350)};
+function balloons(n=14){for(let i=0;i<n;i++){const b=document.createElement('div');b.className='balloon';b.textContent='🎈';
+  b.style.cssText=`left:${rnd(2,92)}vw;font-size:${rnd(2,3.6)}rem;animation-duration:${rnd(6,10)}s;animation-delay:${rnd(0,2.5)}s;--dx:${rnd(-60,60)}px;--rt:${rnd(-20,20)}deg`;
+  b.addEventListener('animationend',()=>b.remove());document.body.appendChild(b)}}
+
+/* ---- birthday tune (Web Audio) ---- */
+function tune(){
+  const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;const c=new AC();
+  const F={C:261.63,D:293.66,E:329.63,F:349.23,G:392,A:440,B:493.88,C2:523.25,D2:587.33,E2:659.25,F2:698.46,G2:783.99};
+  const S=[['G',.75],['G',.25],['A',1],['G',1],['C2',1],['B',2],['G',.75],['G',.25],['A',1],['G',1],['D2',1],['C2',2],
+    ['G',.75],['G',.25],['G2',1],['E2',1],['C2',1],['B',1],['A',1],['F2',.75],['F2',.25],['E2',1],['C2',1],['D2',1],['C2',2.5]];
+  let t=c.currentTime+.05;const beat=.42;
+  for(const [n,b] of S){const o=c.createOscillator(),g=c.createGain();o.type='triangle';o.frequency.value=F[n];
+    o.connect(g);g.connect(c.destination);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.18,t+.03);
+    g.gain.exponentialRampToValueAtTime(.0001,t+b*beat*.95);o.start(t);o.stop(t+b*beat);t+=b*beat}
+  setTimeout(()=>c.close(),(t-c.currentTime)*1000+400);
+}
+
+/* ---- background music ---- */
+const bg=$('#bg');bg.volume=.5;
+function startBg(){bg.play().catch(()=>{});$('#mute').hidden=false}
+$('#mute').onclick=()=>{bg.muted=!bg.muted;$('#mute').textContent=bg.muted?'🔇':'🔊'};
+
+/* ---- stage 1: lock ---- */
+const T=new Date(CFG.unlock);let stage='lock';
+function toCake(){
+  if(stage!=='lock')return;stage='cake';
+  $('#lock').hidden=true;$('#cake').hidden=false;scrollTo(0,0);fireworks(4);
+}
+function tick(){
+  const d=T-new Date();if(d<=0){toCake();return}
+  const s=Math.floor(d/1000);
+  $('#cd').textContent=Math.floor(s/86400);$('#ch').textContent=Math.floor(s%86400/3600);
+  $('#cm').textContent=Math.floor(s%3600/60);$('#cs').textContent=s%60;
+}
+setInterval(tick,250);tick();
+if(location.search.includes('open'))toCake();
+function tryCode(){
+  const norm=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
+  if(norm($('#code').value)===norm(CFG.code))return toCake();
+  $('#msg').textContent='Hmm, that’s not it. Think of what you mean to me 😉';
+  const p=$('#pill');p.classList.remove('shake');void p.offsetWidth;p.classList.add('shake');
+}
+$('#go').onclick=tryCode;$('#code').onkeydown=e=>e.key==='Enter'&&tryCode();
+
+/* ---- stage 2: cake ---- */
+const cand=$('#cand'),NS='http://www.w3.org/2000/svg';
+[92,121,150,179,208].forEach((x,i)=>{
+  cand.insertAdjacentHTML('beforeend',`<rect x="${x-4}" y="92" width="8" height="42" rx="2" fill="${['#8ecbff','#ffc46b','#c79bff','#7be0b0','#ff8fab'][i]}"/>
+  <rect x="${x-.7}" y="84" width="1.4" height="9" fill="#4a2a2a"/>
+  <g transform="translate(${x},86)"><g class="fl"><g class="fi"><path d="M0-16C7-7 7 1 0 4-7 1-7-7 0-16z" fill="#ffb300"/><path d="M0-9C3-5 3-1 0 2-3-1-3-5 0-9z" fill="#fff3b0"/></g></g></g>`);
+});
+const flames=[...document.querySelectorAll('.fl')];let out=false,mic=null;
+const lean=lv=>flames.forEach((f,i)=>f.style.transform=`skewX(${lv*(18+i*3)}deg) scaleY(${1-lv*.35})`);
+function blowOut(){
+  if(out)return;out=true;mic&&mic.stop();
+  flames.forEach(f=>f.classList.add('out'));
+  [92,121,150,179,208].forEach((x,i)=>{for(let k=0;k<2;k++){const c=document.createElementNS(NS,'circle');c.setAttribute('cx',x);c.setAttribute('cy',80);c.setAttribute('r',3);c.setAttribute('class','smoke');c.style.animationDelay=(k*.5+i*.05)+'s';$('#sprk').appendChild(c)}});
+  $('#wish').innerHTML='<h2>Wish made. ✨</h2><p>Now… turn the lights on.</p>';
+  $('#micBtn').hidden=true;
+  setTimeout(()=>{document.body.classList.add('lit');burst(innerWidth/2,innerHeight*.45,120);balloons();startBg()},1000);
+  setTimeout(openStory,3600);
+}
+$('#cakeSvg').onclick=blowOut;
+$('#micBtn').onclick=async()=>{
+  try{
+    const s=await navigator.mediaDevices.getUserMedia({audio:true}),c=new (window.AudioContext||window.webkitAudioContext)(),a=c.createAnalyser();
+    a.fftSize=1024;c.createMediaStreamSource(s).connect(a);const buf=new Float32Array(a.fftSize);
+    let acc=0,last=performance.now(),alive=true;
+    mic={stop(){alive=false;s.getTracks().forEach(t=>t.stop());c.close()}};
+    $('#micBtn').textContent='🎤 Listening… blow!';
+    (function f(now){if(!alive)return;const dt=(now-last)/1000;last=now;a.getFloatTimeDomainData(buf);
+      let r=0;for(const v of buf)r+=v*v;r=Math.sqrt(r/buf.length);lean(Math.min(1,r*5));
+      acc=Math.max(0,acc+(r>.1?dt:-dt*.6));if(acc>.5)blowOut();requestAnimationFrame(f)})(last);
+  }catch(e){$('#micBtn').textContent='No mic? Just tap the flames 👆'}
+};
+
+/* ---- stage 3: story ---- */
+let built=false;
+function openStory(){
+  stage='story';$('#story').hidden=false;
+  if(!built){built=true;buildName();buildPolaroids();buildScratch()}
+  layout();
+  const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.15});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  $('#story').scrollIntoView({behavior:'smooth'});
+}
+function buildName(){
+  $('#name').innerHTML=[...CFG.name].map((ch,i)=>`<span style="--i:${i}">${ch}</span>`).join('');
+  $('#name').onclick=()=>fireworks(3);
+}
+$('#song').onclick=()=>{bg.volume=.1;tune();setTimeout(()=>bg.volume=.5,11000)};
+$('#fw').onclick=()=>{fireworks(6);balloons(8)};
+$('#heart').onclick=()=>{fireworks(5);balloons(10)};
+
+/* polaroids: tap = develop, drag = move */
+const poly=$('#poly'),pols=[];let z=10;
+const place=(el,s)=>el.style.transform=`translate(${s.x}px,${s.y}px) rotate(${s.r}deg)`;
+function buildPolaroids(){
+  CFG.photos.forEach(([src,cap,fit],i)=>{
+    const el=document.createElement('figure');el.className='pol';
+    el.innerHTML=`<div class="ph"><img src="${encodeURI(src)}" alt="${cap}" draggable="false" ${fit?`style="object-fit:${fit}"`:''}></div><figcaption>${cap}</figcaption>`;
+    const s={x:0,y:0,r:rnd(-8,8)};pols.push([el,s]);poly.appendChild(el);
+    let sx,sy,ox,oy,moved=0;
+    el.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;ox=s.x;oy=s.y;moved=0;el.setPointerCapture(e.pointerId);el.style.zIndex=++z});
+    el.addEventListener('pointermove',e=>{if(!el.hasPointerCapture(e.pointerId))return;const dx=e.clientX-sx,dy=e.clientY-sy;moved=Math.max(moved,Math.abs(dx)+Math.abs(dy));s.x=ox+dx;s.y=oy+dy;place(el,s)});
+    el.addEventListener('pointerup',()=>{if(moved<8&&!el.classList.contains('dev')){el.classList.add('dev');const b=el.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,18,true)}});
+  });
+}
+function layout(){
+  const W=poly.clientWidth,pw=W<560?150:200,cols=Math.max(2,Math.floor(W/(pw*.82))),rows=Math.ceil(pols.length/cols),rh=pw*1.52*.86;
+  poly.style.setProperty('--pw',pw+'px');poly.style.height=(rows*rh+pw*.5)+'px';
+  pols.forEach(([el,s],i)=>{const c=i%cols,r=Math.floor(i/cols);
+    s.x=cols>1?c*(W-pw-20)/(cols-1)+rnd(-8,8):0;s.x=Math.max(0,s.x);s.y=r*rh+rnd(-10,10)+(c%2?18:0);place(el,s)});
+}
+addEventListener('resize',()=>{if(built)layout()});
+
+/* letter */
+$('#env').onclick=function(){
+  this.classList.add('open');const p=$('#paper');
+  setTimeout(()=>{p.classList.add('show','typing');let i=0;const txt=CFG.letter+CFG.from;
+    (function t(){p.textContent=txt.slice(0,++i);if(i<txt.length)setTimeout(t,32);else p.classList.remove('typing')})()},800);
+};
+
+/* scratch card */
+function buildScratch(){
+  $('#reward').textContent=CFG.gift;
+  const c=$('#sc'),g=c.getContext('2d');
+  const gr=g.createLinearGradient(0,0,340,170);gr.addColorStop(0,'#cfd3de');gr.addColorStop(.5,'#f4f5fa');gr.addColorStop(1,'#a9aebd');
+  g.fillStyle=gr;g.fillRect(0,0,340,170);g.fillStyle='#7c8194';g.font='700 22px Fraunces,Georgia,serif';g.textAlign='center';g.fillText('✨ scratch here ✨',170,92);
+  let down=false,n=0,done=false;
+  const at=e=>{const r=c.getBoundingClientRect();return[(e.clientX-r.left)*340/r.width,(e.clientY-r.top)*170/r.height]};
+  const dot=e=>{const[x,y]=at(e);g.globalCompositeOperation='destination-out';g.beginPath();g.arc(x,y,20,0,6.283);g.fill();
+    if(++n%8===0&&!done){const d=g.getImageData(0,0,340,170).data;let k=0;for(let i=3;i<d.length;i+=64)if(d[i]===0)k++;
+      if(k/(d.length/64)>.5){done=true;c.style.opacity=0;const b=c.getBoundingClientRect();burst(b.left+b.width/2,b.top+b.height/2,100);fireworks(3)}}};
+  c.addEventListener('pointerdown',e=>{down=true;c.setPointerCapture(e.pointerId);dot(e)});
+  c.addEventListener('pointermove',e=>down&&dot(e));
+  c.addEventListener('pointerup',()=>down=false);
+}
+</script>
+</body>
 </html>
-
