@@ -6,7 +6,7 @@
 <title>Happy Birthday Sakshi ✨</title>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Fraunces:ital,wght@1,600;1,800&display=swap" rel="stylesheet">
 <style>
-:root{--rose:#ff6b8b;--gold:#ffc46b;--cream:#fff4e6}
+:root{--rose:#ff6b8b;--gold:#ffc46b;--cream:#fff4e6;color-scheme:dark}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;min-height:100vh;color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -10%,#3d1654,#14081f 55%,#0b0414) fixed;overflow-x:hidden}
@@ -34,7 +34,8 @@ section,main{position:relative;z-index:1}
 .count small{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;opacity:.6}
 .pill{display:flex;gap:8px;width:min(92vw,400px)}
 .pill input{flex:1;min-width:0;padding:13px 18px;border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;font-size:1rem;outline:none}
-.pill input:-webkit-autofill{-webkit-text-fill-color:#fff;box-shadow:0 0 0 100px #2a1840 inset}
+.pill input{color:#fff!important;-webkit-text-fill-color:#fff;caret-color:#fff;color-scheme:dark;background:#2a1840;font-family:system-ui,sans-serif}
+.pill input:-webkit-autofill,.pill input:-webkit-autofill:focus{-webkit-text-fill-color:#fff!important;caret-color:#fff;transition:background-color 99999s;box-shadow:0 0 0 100px #2a1840 inset}
 .shake{animation:shake .4s}
 @keyframes shake{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
 #msg{min-height:1.2em;font-size:.9rem;color:#ffb3c4}
@@ -192,7 +193,7 @@ footer button{background:none;border:0;font-size:2.4rem;cursor:pointer;animation
 /* ====== EDIT ME ====== */
 const CFG = {
   name: 'Sakshi',
-  from: 'Vansh',
+  from: 'Vasu',
   unlock: '2026-10-30T00:00:00',   // local time of whoever opens it
   code: 'loveyou3018',
   photos: [
@@ -224,7 +225,7 @@ so until then, this page is my hug.
 
 Always yours,
 `,
-  gift: '🎟️ COUPON\nOne movie date, fully planned by me.\nYou pick the food, the movie and the games.\nValid whenever you want, no expiry.'
+  gift: '🎟️ COUPON\nOne video date, fully planned by me.\nYou pick the food, the movie and the games.\nValid whenever you want, no expiry.'
 };
 /* ===================== */
 
@@ -292,7 +293,8 @@ function tryCode(){
   $('#msg').textContent='Hmm, that’s not it. Think of what you mean to me 😉';
   const p=$('#pill');p.classList.remove('shake');void p.offsetWidth;p.classList.add('shake');
 }
-$('#go').onclick=tryCode;$('#code').onkeydown=e=>e.key==='Enter'&&tryCode();
+$('#go').addEventListener('click',()=>{tryCode()});
+$('#code').addEventListener('keydown',e=>{if(e.key==='Enter')tryCode()});
 
 /* ---- stage 2: cake ---- */
 const cand=$('#cand'),NS='http://www.w3.org/2000/svg';
